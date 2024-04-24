@@ -1,8 +1,11 @@
-name: hello-world
-on: push
-jobs:
-  my-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: my-step
-        run: echo "Hello World!"
+- name: JMeter Test
+  uses: SruthySJ/GithubActions
+  with:
+    test-plan-path: ./Desktop/Thread Group.jmx
+    args: ""
+- name: Upload Results
+  uses: actions/upload-artifact@v3
+  with:
+    name: jmeter-results
+    path: result.jtl
+    if-no-files-found: error
